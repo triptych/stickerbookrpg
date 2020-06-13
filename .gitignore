@@ -5,3 +5,6 @@
 bin/
 build/
 lib/
+
+# Zip files
+*.zip
