@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/drop_target.gd" type="Script" id=1]
+[ext_resource path="res://scripts/drop_target.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 45, 45 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 45, 45 )
 
 [node name="drop_target" type="Node2D"]
@@ -30,5 +33,12 @@ input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
 [connection signal="gui_input" from="ColorRect" to="." method="_on_ColorRect_gui_input"]
 [connection signal="input_event" from="KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]

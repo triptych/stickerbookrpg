@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	#print(dragging)
 	if dragging:
-		print('dragging')
+		# print('dragging')
 		var mousepos = get_viewport().get_mouse_position()
 		self.position = mousepos
 		
